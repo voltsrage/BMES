@@ -32,17 +32,25 @@ namespace BMES
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
+                options.CheckConsentNeeded = context => false;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
             services.AddDbContext<BmesDbContext>(optionsAction: options => options.UseSqlServer(Configuration.GetConnectionString("BmesWebApp")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMemoryCache();
+            services.AddSession();
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IBrandRepository, BrandRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<ICartItemRepository, CartItemRepository>();
+            services.AddTransient<ICartRepository, CartRepository>();
+            services.AddTransient<IAddressRepository, AddressRepository>();
+            services.AddTransient<IPersonRepository, PersonRepository>();
+            services.AddTransient<ICustomerRepository, CustomerRepository>();
 
             services.AddTransient<ICatalogService, CatalogService>();
+            services.AddTransient<ICartService, CartService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
@@ -59,6 +67,7 @@ namespace BMES
             }
 
             app.UseStaticFiles();
+            app.UseSession();
             app.UseCookiePolicy();
 
             app.UseMvc(routes =>

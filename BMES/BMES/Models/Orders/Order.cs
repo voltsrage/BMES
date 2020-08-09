@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BMES.ViewModels.Catalogue
+namespace BMES.Models.Orders
 {
-    public class AddToCartViewModel
+    public class Order
     {
     }
 }

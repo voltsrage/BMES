@@ -8,13 +8,16 @@
     <environment include="Development">
         @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />*@
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+       
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/bmes.css" />
+
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+       
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/bmes.css" />
     </environment>
@@ -36,7 +39,7 @@
             <div class="navbar-collapse collapse navbar-right layout__cart-wrapper">
                 <ul class="nav navbar-nav">
                     <li>
-                        @*<partial name=".../Cart/Partials/_CartSummaryWidget.cshtml" />*@
+                        <partial name="../Cart/Partials/_CartSummaryWidget.cshtml" />
                     </li>
                 </ul>
             </div>

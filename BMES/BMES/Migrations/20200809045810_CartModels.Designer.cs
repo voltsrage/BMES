@@ -4,55 +4,22 @@ using BMES.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BMES.Migrations
 {
     [DbContext(typeof(BmesDbContext))]
-    partial class BmesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200809045810_CartModels")]
+    partial class CartModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.1.14-servicing-32113")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("BMES.Models.Address.AddressModel", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AddressLine1");
-
-                    b.Property<string>("AddressLine2");
-
-                    b.Property<string>("City");
-
-                    b.Property<string>("Country");
-
-                    b.Property<DateTimeOffset>("CreateDate");
-
-                    b.Property<long?>("CustomerId");
-
-                    b.Property<DateTimeOffset>("ModifiedDate");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("State");
-
-                    b.Property<string>("ZipCode");
-
-                    b.Property<bool>("isDeleted");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
-
-                    b.ToTable("Addresses");
-                });
 
             modelBuilder.Entity("BMES.Models.Cart.Cart", b =>
                 {
@@ -100,27 +67,6 @@ namespace BMES.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("CartItems");
-                });
-
-            modelBuilder.Entity("BMES.Models.Customer.Customer", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTimeOffset>("CreateDate");
-
-                    b.Property<DateTimeOffset>("ModifiedDate");
-
-                    b.Property<long>("PersonId");
-
-                    b.Property<bool>("isDeleted");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PersonId");
-
-                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("BMES.Models.Products.Brand", b =>
@@ -236,44 +182,6 @@ namespace BMES.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("BMES.Models.Shared.Person", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTimeOffset>("CreateDate");
-
-                    b.Property<string>("DateOfBirth");
-
-                    b.Property<string>("EmailAddress");
-
-                    b.Property<string>("FirstName");
-
-                    b.Property<int>("Gender");
-
-                    b.Property<string>("LastName");
-
-                    b.Property<string>("MiddleName");
-
-                    b.Property<DateTimeOffset>("ModifiedDate");
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.Property<bool>("isDeleted");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("People");
-                });
-
-            modelBuilder.Entity("BMES.Models.Address.AddressModel", b =>
-                {
-                    b.HasOne("BMES.Models.Customer.Customer")
-                        .WithMany("Addresses")
-                        .HasForeignKey("CustomerId");
-                });
-
             modelBuilder.Entity("BMES.Models.Cart.CartItem", b =>
                 {
                     b.HasOne("BMES.Models.Cart.Cart", "Cart")
@@ -284,14 +192,6 @@ namespace BMES.Migrations
                     b.HasOne("BMES.Models.Products.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("BMES.Models.Customer.Customer", b =>
-                {
-                    b.HasOne("BMES.Models.Shared.Person", "Person")
-                        .WithMany()
-                        .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

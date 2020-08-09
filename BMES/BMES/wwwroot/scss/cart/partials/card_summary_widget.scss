@@ -1,0 +1,27 @@
+﻿.cart_summary_widget {
+    font-family: Roboto,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    &__wrapper {
+        color: purple;
+        margin-top: -10px;
+        font-size: 14px;
+    }
+
+    &__item-count {
+        font-size: 14px;
+        font-weight: 600;
+        color: #65737e;
+    }
+
+    &__cart-total {
+        font-size: 16px;
+        font-weight: 600;
+        color: #41533b;
+    }
+
+    &__cart-icon {
+        font-size: 25px;
+        color: purple;
+        margin-top: -10px;
+    }
+}

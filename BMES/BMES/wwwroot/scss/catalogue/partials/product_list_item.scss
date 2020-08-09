@@ -1,4 +1,5 @@
 ﻿.product-list-item {
+    font-family: Roboto,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     height: 370px;
     text-align: center;
     padding: 10px 5px 10px 5px;
@@ -17,19 +18,24 @@
     &__product-name {
         font-size: 14px;
         font-weight: 500;
-        color: purple;
+        color: black;
     }
 
     &__product-price {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 500;
         color: purple;
     }
 
-    &__button{
-        background-color:purple;
-        color:white;
-        padding: 8px 10px;
-        border:none;
+    &__button {
+        background-color: purple;
+        color: white;
+        padding: 4px 15px;
+        border-radius: 10%;
+
+        &:hover {
+            background-color: white;
+            color: purple;
+        }
     }
 }
