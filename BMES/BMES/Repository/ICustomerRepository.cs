@@ -8,10 +8,10 @@ namespace BMES.Repository
 {
     public interface ICustomerRepository
     {
-        Customer FindCustomerById(long id);
-        IEnumerable<Customer> GetAllCustomers();
-        void SaveCustomer(Customer customer);
-        void UpdateCustomer(Customer customer);
-        void DeleteCustomer(Customer customer);
+        CustomerModel FindCustomerById(long id);
+        IEnumerable<CustomerModel> GetAllCustomers();
+        void SaveCustomer(CustomerModel customer);
+        void UpdateCustomer(CustomerModel customer);
+        void DeleteCustomer(CustomerModel customer);
     }
 }

@@ -7,6 +7,7 @@ using BMES.Models.Products;
 using BMES.Models.Cart;
 using BMES.Models.Address;
 using BMES.Models.Customer;
+using BMES.Models.Orders;
 using BMES.Models.Shared;
 
 namespace BMES.Database
@@ -24,7 +25,9 @@ namespace BMES.Database
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
         public DbSet<AddressModel> Addresses { get; set; }
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<CustomerModel> Customers { get; set; }
         public DbSet<Person> People { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
     }
 }

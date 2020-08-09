@@ -1,0 +1,83 @@
+﻿@model CheckoutViewModel
+
+@{
+    ViewData["Title"] = "CheckOut";
+    var cartTotal = Convert.ToDecimal(ViewData["CartTotal"]);
+    var cartItemsCount = Convert.ToInt32(ViewData["CartItemsCount"]);
+    var cartItems = ViewData["CartItems"] as IEnumerable<CartItem>;
+}
+
+
+<div class="checkout">
+    <div class="panel panel-default checkout__panel" >
+        <div class="panel-heading checkout__header">
+            <h1 class="panel-title checkout__panel-title">
+                <span>Submit Your Order</span>
+            </h1>
+        </div>
+        <form asp-controller="CheckOut" asp-action="CheckOut" method="post" style="padding-bottom:0px">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="checkout__input-label">FirstName</label>
+                <input asp-for="FirstName" class="form-control checkout__subject-input" required />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MiddleName" class="checkout__input-label">MiddleName</label>
+                <input asp-for="MiddleName" class="form-control checkout__subject-input" required />
+                <span asp-validation-for="MiddleName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="checkout__input-label">LastName</label>
+                <input asp-for="LastName" class="form-control checkout__subject-input" required />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmailAddress" class="checkout__input-label">EmailAddress</label>
+                <input asp-for="EmailAddress" class="form-control checkout__subject-input" required />
+                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressLine1" class="checkout__input-label">AddressLine1</label>
+                <input asp-for="AddressLine1" class="form-control checkout__subject-input" required />
+                <span asp-validation-for="AddressLine1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressLine2" class="checkout__input-label">AddressLine2</label>
+                <input asp-for="AddressLine2" class="form-control checkout__subject-input" />
+                <span asp-validation-for="AddressLine2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="checkout__input-label">City</label>
+                <input asp-for="City" class="form-control checkout__subject-input" required />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="State" class="checkout__input-label">State</label>
+                <input asp-for="State" class="form-control checkout__subject-input"  />
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ZipCode" class="checkout__input-label">ZipCode</label>
+                <input asp-for="ZipCode" class="form-control checkout__subject-input"  />
+                <span asp-validation-for="ZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Country" class="checkout__input-label">Country</label>
+                <input asp-for="Country" class="form-control checkout__subject-input" required />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+            <div class="panel-footer">
+                <div class="checkout__flex-container">
+                    <a class="btn btn-sm checkout__button" asp-controller="Cart" asp-action="CartDetail">Cancel</a>
+                    <button class="btn btn-sm checkout__button" type="submit">Submit Order</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

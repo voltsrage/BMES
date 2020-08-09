@@ -24,7 +24,7 @@ namespace BMES.Repository.Implementations
 
         public IEnumerable<Cart> GetAllCarts()
         {
-            var carts = _context.Carts;             
+            var carts = _context.Carts;
             return carts;
         }
 

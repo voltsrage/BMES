@@ -16,31 +16,31 @@ namespace BMES.Repository.Implementations
             _context = context;
         }
 
-        public Customer FindCustomerById(long id)
+        public CustomerModel FindCustomerById(long id)
         {
             var customer = _context.Customers.Find(id);
             return customer;
         }
 
-        public IEnumerable<Customer> GetAllCustomers()
+        public IEnumerable<CustomerModel> GetAllCustomers()
         {
             var customers = _context.Customers;
             return customers;
         }
 
-        public void SaveCustomer(Customer customer)
+        public void SaveCustomer(CustomerModel customer)
         {
             _context.Customers.Add(customer);
             _context.SaveChanges();
         }
 
-        public void UpdateCustomer(Customer customer)
+        public void UpdateCustomer(CustomerModel customer)
         {
             _context.Customers.Update(customer);
             _context.SaveChanges();
         }
 
-        public void DeleteCustomer(Customer customer)
+        public void DeleteCustomer(CustomerModel customer)
         {
             _context.Customers.Remove(customer);
             _context.SaveChanges();
