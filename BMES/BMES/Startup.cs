@@ -36,7 +36,7 @@ namespace BMES
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<BmesDbContext>(optionsAction: options => options.UseSqlServer(Configuration.GetConnectionString("BmesWebApp")));
+            services.AddDbContext<BmesDbContext>(optionsAction: options => options.UseSqlServer(Configuration.GetConnectionString("BmesAzureWebApp")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddMemoryCache();
             services.AddSession();

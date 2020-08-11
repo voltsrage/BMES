@@ -78,9 +78,15 @@ namespace BMES.Services.Implementations
                             Cart = cart,
                             ProductId = addToCartViewModel.ProductId,
                             Product = product,
+                            ModifiedDate = DateTimeOffset.Now,
+                            CreateDate = DateTimeOffset.Now,
                             Quantity = 1
                         };
                         _cartItemRepository.SaveCartItem(cartItem);
+
+                        cart.ModifiedDate = DateTimeOffset.Now;
+
+                        _cartRepository.UpdateCart(cart);
                     }
                 }
             }
@@ -93,6 +99,8 @@ namespace BMES.Services.Implementations
                     var newCart = new Cart
                     {
                         UniqueCartId = UniqueCartId(),
+                        ModifiedDate = DateTimeOffset.Now,
+                        CreateDate = DateTimeOffset.Now,
                         CartStatus = CartStatus.Open
                     };
 
@@ -104,6 +112,8 @@ namespace BMES.Services.Implementations
                         Cart = newCart,
                         ProductId = addToCartViewModel.ProductId,
                         Product = product,
+                        ModifiedDate = DateTimeOffset.Now,
+                        CreateDate = DateTimeOffset.Now,
                         Quantity = 1
                     };
 

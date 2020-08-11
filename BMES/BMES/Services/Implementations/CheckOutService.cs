@@ -51,6 +51,8 @@ namespace BMES.Services.Implementations
                 MiddleName = checkoutViewModel.MiddleName,
                 LastName = checkoutViewModel.LastName,
                 EmailAddress = checkoutViewModel.EmailAddress,
+                ModifiedDate = DateTimeOffset.Now,
+                CreateDate = DateTimeOffset.Now,
                 isDeleted = false
             };
 
@@ -63,6 +65,8 @@ namespace BMES.Services.Implementations
                 City = checkoutViewModel.City,
                 State = checkoutViewModel.State,
                 Country = checkoutViewModel.Country,
+                ModifiedDate = DateTimeOffset.Now,
+                CreateDate = DateTimeOffset.Now,
                 ZipCode = checkoutViewModel.ZipCode
             };
 
@@ -72,6 +76,8 @@ namespace BMES.Services.Implementations
             {
                 PersonId = person.Id,
                 Person = person,
+                ModifiedDate = DateTimeOffset.Now,
+                CreateDate = DateTimeOffset.Now,
                 isDeleted = false
             };
 
@@ -96,6 +102,8 @@ namespace BMES.Services.Implementations
                     DeliveryAddress = address,
                     CustomerId = customer.Id,
                     Customer = customer,
+                    ModifiedDate = DateTimeOffset.Now,
+                    CreateDate = DateTimeOffset.Now,
                     OrderStatus = OrderStatus.Submitted
                 };
 
@@ -109,12 +117,15 @@ namespace BMES.Services.Implementations
                         Order = order,
                         OrderId = order.Id,
                         Product = cartItem.Product,
+                        ModifiedDate = DateTimeOffset.Now,
+                        CreateDate = DateTimeOffset.Now,
                         ProductId = cartItem.ProductId
                     };
-
+                   
                     _orderItemRepository.SaveOrderItem(orderItem);
                 }
-
+                order.ModifiedDate = DateTimeOffset.Now;
+                _orderRepository.UpdateOrder(order);
                 _cartRepository.DeleteCart(cart);
             }
         }
