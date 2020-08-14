@@ -1,4 +1,8 @@
-﻿.brand {
+﻿body{
+    box-sizing:border-box;
+}
+
+.brand {
     font-family: Roboto,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
